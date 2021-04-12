@@ -3,6 +3,7 @@ package co.longbeom.kotdemo.user.interfaces
 import co.longbeom.kotdemo.user.application.UserService
 import co.longbeom.kotdemo.user.interfaces.dto.RegisterRequest
 import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -15,9 +16,10 @@ class AuthController {
     @Autowired
     private lateinit var userService: UserService
 
-    @PostMapping("/register")
+    @ApiOperation(value = "회원가입")
     @ResponseStatus(HttpStatus.CREATED)
-    fun register(@RequestBody @Valid registerRequest: RegisterRequest): Unit {
+    @PostMapping("/register")
+    fun register(@RequestBody @Valid registerRequest: RegisterRequest) {
         userService.register(registerRequest)
     }
 }

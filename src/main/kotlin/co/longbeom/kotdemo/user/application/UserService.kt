@@ -6,13 +6,15 @@ import co.longbeom.kotdemo.user.interfaces.dto.RegisterRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
+import javax.transaction.Transactional
 
 @Service
 class UserService {
     @Autowired
     lateinit var userRepository: UserRepository
 
-    fun register(registerRequest: RegisterRequest): Unit {
+    @Transactional
+    fun register(registerRequest: RegisterRequest) {
         val socialId = registerRequest.socialId
 
         if (userRepository.findBySocialId(socialId).isPresent) {

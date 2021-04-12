@@ -9,18 +9,18 @@ import javax.validation.constraints.NotNull
 @ApiModel
 data class RegisterRequest(
         @ApiModelProperty(value = "소셜 아이디", required = true)
-        @NotNull(message = "The socialId must not be Null")
+        @field:NotNull(message = "The socialId must not be Null")
         val socialId: String,
 
         @ApiModelProperty(value = "로그인 타입", required = true)
-        @NotNull(message = "The loginType must not be Null")
+        @field:NotNull(message = "The loginType must not be Null")
         val loginType: LoginType,
 
         @ApiModelProperty(value = "닉네임", required = true)
-        @NotNull(message = "The nickname must not be Null")
+        @field:NotNull(message = "The nickname must not be Null")
         val nickname: String,
 
         @ApiModelProperty(value = "이메일", required = true)
-        @Email
+        @field:Email
         val email: String
 )
