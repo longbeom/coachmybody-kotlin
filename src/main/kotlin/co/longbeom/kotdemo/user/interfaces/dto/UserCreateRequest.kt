@@ -1,6 +1,6 @@
-package co.longbeom.kotdemo.interfaces.dto
+package co.longbeom.kotdemo.user.interfaces.dto
 
-import co.longbeom.kotdemo.domain.model.User
+import co.longbeom.kotdemo.user.domain.User
 
 data class UserCreateRequest(
         val name: String,

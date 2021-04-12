@@ -1,7 +1,7 @@
-package co.longbeom.kotdemo.domain.model
+package co.longbeom.kotdemo.user.domain
 
-import co.longbeom.kotdemo.interfaces.dto.UserCreateRequest
-import co.longbeom.kotdemo.interfaces.dto.UserResponse
+import co.longbeom.kotdemo.user.interfaces.dto.UserCreateRequest
+import co.longbeom.kotdemo.user.interfaces.dto.UserResponse
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType

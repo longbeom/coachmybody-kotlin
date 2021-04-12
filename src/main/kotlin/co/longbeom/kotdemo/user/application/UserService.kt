@@ -1,9 +1,9 @@
-package co.longbeom.kotdemo.application
+package co.longbeom.kotdemo.user.application
 
-import co.longbeom.kotdemo.domain.repository.UserRepository
-import co.longbeom.kotdemo.interfaces.dto.UserCreateRequest
-import co.longbeom.kotdemo.interfaces.dto.UserResponse
-import co.longbeom.kotdemo.interfaces.dto.UserUpdateRequest
+import co.longbeom.kotdemo.user.domain.repository.UserRepository
+import co.longbeom.kotdemo.user.interfaces.dto.UserCreateRequest
+import co.longbeom.kotdemo.user.interfaces.dto.UserResponse
+import co.longbeom.kotdemo.user.interfaces.dto.UserUpdateRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

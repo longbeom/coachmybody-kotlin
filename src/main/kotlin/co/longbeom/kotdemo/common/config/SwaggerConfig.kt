@@ -1,4 +1,4 @@
-package co.longbeom.kotdemo.config
+package co.longbeom.kotdemo.common.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
