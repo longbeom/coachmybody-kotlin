@@ -1,36 +1,32 @@
 package co.longbeom.kotdemo.user.application
 
+import co.longbeom.kotdemo.user.domain.User
 import co.longbeom.kotdemo.user.domain.repository.UserRepository
-import co.longbeom.kotdemo.user.interfaces.dto.UserCreateRequest
-import co.longbeom.kotdemo.user.interfaces.dto.UserResponse
-import co.longbeom.kotdemo.user.interfaces.dto.UserUpdateRequest
+import co.longbeom.kotdemo.user.interfaces.dto.RegisterRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class UserService {
-
     @Autowired
     lateinit var userRepository: UserRepository
 
-    fun saveUser(userCreateRequest: UserCreateRequest): Boolean {
-        userRepository.save(userCreateRequest.toEntity())
-        return true
-    }
+    fun register(registerRequest: RegisterRequest): Unit {
+        val socialId = registerRequest.socialId
 
-    fun findById(userId: Long): UserResponse {
-        val user = userRepository.findById(userId).orElse(null)
-        return user.toUserResponse()
-    }
+        if (userRepository.findBySocialId(socialId).isPresent) {
+            throw IllegalArgumentException()
+        }
 
-    fun updateUser(userId: Long, userUpdateRequest: UserUpdateRequest): UserResponse {
-        userRepository.save(userUpdateRequest.toEntity(userId))
-        val user = userRepository.findById(userId).orElse(null)
-        return user.toUserResponse()
-    }
+        val user = User(
+                id = UUID.randomUUID().toString(),
+                socialId = socialId,
+                loginType = registerRequest.loginType,
+                nickname = registerRequest.nickname,
+                email = registerRequest.email
+        )
 
-    fun deleteById(userId: Long): Boolean {
-        userRepository.deleteById(userId)
-        return true
+        userRepository.save(user)
     }
 }

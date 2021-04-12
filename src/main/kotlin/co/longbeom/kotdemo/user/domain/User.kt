@@ -1,33 +1,16 @@
 package co.longbeom.kotdemo.user.domain
 
-import co.longbeom.kotdemo.user.interfaces.dto.UserCreateRequest
-import co.longbeom.kotdemo.user.interfaces.dto.UserResponse
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-
+import co.longbeom.kotdemo.user.type.LoginType
+import javax.persistence.*
 
 @Entity
-data class User (
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
-    val name: String,
-    var address: String
-) {
-    fun toUserResponse(): UserResponse {
-        return UserResponse(
-                id = id,
-                name = name,
-                address = address
-        )
-    }
-
-    fun toUserRequest(): UserCreateRequest {
-        return UserCreateRequest(
-                name = name,
-                address = address
-        )
-    }
-}
+data class User(
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        val id: String? = null,
+        val socialId: String? = null,
+        @Enumerated(value = EnumType.STRING)
+        val loginType: LoginType? = null,
+        val nickname: String,
+        var email: String
+)

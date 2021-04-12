@@ -18,8 +18,8 @@ class SwaggerConfig {
         return Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(appInfo())
                 .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("co.longbeom.kotdemo"))
+                .paths(PathSelectors.ant("/**"))
                 .build()
     }
 
