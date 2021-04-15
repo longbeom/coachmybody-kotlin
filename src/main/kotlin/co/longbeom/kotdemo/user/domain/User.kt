@@ -7,10 +7,10 @@ import javax.persistence.*
 data class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: String? = null,
-        val socialId: String? = null,
+        val id: String,
+        val socialId: String,
         @Enumerated(value = EnumType.STRING)
-        val loginType: LoginType? = null,
-        val nickname: String,
+        val loginType: LoginType,
+        var nickname: String,
         var email: String
 )

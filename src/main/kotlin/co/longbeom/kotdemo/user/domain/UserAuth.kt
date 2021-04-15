@@ -11,7 +11,7 @@ data class UserAuth(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
-        val accessToken: String,
-        val refreshToken: String,
-        val expiredAt: Instant
+        var accessToken: String,
+        var refreshToken: String,
+        var expiredAt: Instant
 )
