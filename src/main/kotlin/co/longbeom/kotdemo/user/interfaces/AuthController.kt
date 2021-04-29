@@ -1,6 +1,6 @@
 package co.longbeom.kotdemo.user.interfaces
 
-import co.longbeom.kotdemo.user.application.UserService
+import co.longbeom.kotdemo.application.UserService
 import co.longbeom.kotdemo.user.interfaces.dto.RegisterRequest
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation

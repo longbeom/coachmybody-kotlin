@@ -1,4 +1,4 @@
-package co.longbeom.kotdemo.user.application
+package co.longbeom.kotdemo.application
 
 import co.longbeom.kotdemo.user.domain.User
 import co.longbeom.kotdemo.user.domain.repository.UserRepository
@@ -22,7 +22,7 @@ class UserService {
         }
 
         val user = User(
-                id = UUID.randomUUID().toString(),
+                id = UUID.randomUUID(),
                 socialId = socialId,
                 loginType = registerRequest.loginType,
                 nickname = registerRequest.nickname,

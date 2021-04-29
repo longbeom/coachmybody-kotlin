@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotNull
 
-@ApiModel
+@ApiModel(description = "회원가입 요청")
 data class RegisterRequest(
         @ApiModelProperty(value = "소셜 아이디", required = true)
         @field:NotNull(message = "The socialId must not be Null")
