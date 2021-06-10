@@ -1,6 +1,6 @@
-package co.longbeom.kotdemo.user.interfaces.dto
+package com.coachmybody.user.interfaces.dto
 
-import co.longbeom.kotdemo.user.type.LoginType
+import com.coachmybody.user.type.LoginType
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 import javax.validation.constraints.Email

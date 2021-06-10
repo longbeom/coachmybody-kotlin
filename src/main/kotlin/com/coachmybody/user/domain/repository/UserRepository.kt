@@ -1,6 +1,6 @@
-package co.longbeom.kotdemo.user.domain.repository
+package com.coachmybody.user.domain.repository
 
-import co.longbeom.kotdemo.user.domain.User
+import com.coachmybody.user.domain.User
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 import java.util.*

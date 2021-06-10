@@ -1,1 +1,1 @@
-rootProject.name = "kot-demo"
+rootProject.name = "coachmybody"

@@ -1,6 +1,6 @@
-package co.longbeom.kotdemo.user.domain
+package com.coachmybody.user.domain
 
-import co.longbeom.kotdemo.user.type.LoginType
+import com.coachmybody.user.type.LoginType
 import org.hibernate.annotations.Type
 import java.util.*
 import javax.persistence.*
@@ -9,7 +9,7 @@ import javax.persistence.*
 data class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Type(type = "uuid-char")
+        @field:Type(type = "uuid-char")
         val id: UUID,
         @Column(unique = true)
         val socialId: String,

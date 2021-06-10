@@ -1,8 +1,8 @@
-package co.longbeom.kotdemo.application
+package com.coachmybody.user.application
 
-import co.longbeom.kotdemo.user.domain.User
-import co.longbeom.kotdemo.user.domain.repository.UserRepository
-import co.longbeom.kotdemo.user.interfaces.dto.RegisterRequest
+import com.coachmybody.user.domain.User
+import com.coachmybody.user.domain.repository.UserRepository
+import com.coachmybody.user.interfaces.dto.RegisterRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
@@ -30,5 +30,10 @@ class UserService {
         )
 
         userRepository.save(user)
+    }
+
+    fun login(socialId: String) {
+        val user = userRepository.findBySocialId(socialId).get() ?: throw IllegalArgumentException("No User")
+
     }
 }

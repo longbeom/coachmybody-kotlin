@@ -1,11 +1,11 @@
-package co.longbeom.kotdemo
+package com.coachmybody
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class KotDemoApplication
+class CoachMyBodyApplication
 
 fun main(args: Array<String>) {
-	runApplication<KotDemoApplication>(*args)
+    runApplication<CoachMyBodyApplication>(*args)
 }

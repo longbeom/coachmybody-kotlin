@@ -1,10 +1,10 @@
-package co.longbeom.kotdemo
+package com.coachmybody
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class KotDemoApplicationTests {
+class CoachMyBodyApplicationTests {
 
 	@Test
 	fun contextLoads() {

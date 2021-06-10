@@ -1,4 +1,4 @@
-package co.longbeom.kotdemo.user.domain
+package com.coachmybody.user.domain
 
 import java.time.Instant
 import javax.persistence.Entity
