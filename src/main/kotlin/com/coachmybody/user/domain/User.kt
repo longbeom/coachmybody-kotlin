@@ -1,20 +1,18 @@
 package com.coachmybody.user.domain
 
 import com.coachmybody.user.type.LoginType
-import org.hibernate.annotations.Type
 import java.util.*
 import javax.persistence.*
 
 @Entity
 data class User(
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @field:Type(type = "uuid-char")
+        @Column(name = "id", unique = true, nullable = false)
         val id: UUID,
-        @Column(unique = true)
+        @Column(unique = true, nullable = false)
         val socialId: String,
         @Enumerated(value = EnumType.STRING)
         val loginType: LoginType,
         var nickname: String,
-        var email: String
+        val email: String
 )
