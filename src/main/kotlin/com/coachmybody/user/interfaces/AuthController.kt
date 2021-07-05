@@ -2,6 +2,7 @@ package com.coachmybody.user.interfaces
 
 import com.coachmybody.user.application.UserService
 import com.coachmybody.user.interfaces.dto.LoginRequest
+import com.coachmybody.user.interfaces.dto.LoginResponse
 import com.coachmybody.user.interfaces.dto.RegisterRequest
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
@@ -41,7 +42,7 @@ class AuthController(
     )
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/login")
-    fun login(@RequestBody loginRequest: @Valid LoginRequest) {
-        userService.login(loginRequest.socialId)
+    fun login(@RequestBody loginRequest: @Valid LoginRequest): LoginResponse {
+        return userService.login(loginRequest.socialId)
     }
 }
