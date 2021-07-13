@@ -8,4 +8,5 @@ import java.util.*
 @Repository
 interface UserAuthRepository : JpaRepository<UserAuth, Long> {
     fun findByUserId(userId: UUID): Optional<UserAuth>
+    fun findByAccessToken(accessToken: String): Optional<UserAuth>
 }
