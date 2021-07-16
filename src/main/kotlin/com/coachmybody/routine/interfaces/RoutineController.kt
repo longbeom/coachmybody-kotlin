@@ -2,6 +2,7 @@ package com.coachmybody.routine.interfaces
 
 import com.coachmybody.common.dto.HeaderDto
 import com.coachmybody.routine.application.RoutineService
+import com.coachmybody.routine.interfaces.dto.RoutineSimpleResponse
 import com.coachmybody.user.application.UserService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
@@ -13,12 +14,13 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @Api(tags = ["Routine"])
-@RequestMapping("/api/v1/routine")
+@RequestMapping("/api/v1")
 @RestController
 class RoutineController(
         @Autowired val routineService: RoutineService,
         @Autowired val userService: UserService
 ) {
+
     @ApiOperation(value = "루틴 생성")
     @ApiResponses(
             value = [
@@ -27,12 +29,28 @@ class RoutineController(
             ]
     )
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
+    @PostMapping("/routines")
     fun create(@RequestParam(name = "title") title: String,
-    @RequestHeader httpHeaders: HttpHeaders) {
+               @RequestHeader httpHeaders: HttpHeaders) {
+
         val headerDto = HeaderDto.of(httpHeaders)
         val user = userService.findByToken(headerDto.token)
 
         routineService.create(title, user)
     }
+
+
+    @ApiOperation(value = "내 루틴 리스트 조회")
+    @ApiResponse(code = 200, message = "내 루틴 리스트 조회 성공")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/users/routines")
+    fun getMyRoutines(@RequestHeader httpHeaders: HttpHeaders,
+                      @RequestParam(value = "hasExercise", required = false) hasExercise: Boolean): List<RoutineSimpleResponse> {
+
+        val user = userService.findUserByHeader(httpHeaders)
+
+        return routineService.getMyRoutines(user, hasExercise);
+    }
+
+
 }

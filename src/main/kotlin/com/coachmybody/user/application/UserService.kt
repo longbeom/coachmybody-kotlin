@@ -9,6 +9,7 @@ import com.coachmybody.user.domain.repository.UserRepository
 import com.coachmybody.user.interfaces.dto.LoginResponse
 import com.coachmybody.user.interfaces.dto.RegisterRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpHeaders
 import org.springframework.lang.NonNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -16,8 +17,8 @@ import java.util.*
 
 @Service
 class UserService(
-    @Autowired var userRepository: UserRepository,
-    @Autowired var userAuthRepository: UserAuthRepository
+        @Autowired var userRepository: UserRepository,
+        @Autowired var userAuthRepository: UserAuthRepository
 ) {
     @Transactional
     fun register(registerRequest: RegisterRequest) {
@@ -56,11 +57,19 @@ class UserService(
     }
 
     @Transactional(readOnly = true)
-    fun findByToken(@NonNull token: String) : User {
+    fun findByToken(@NonNull token: String): User {
         val userAuth = userAuthRepository.findByAccessToken(token) ?: throw InvalidAccessTokenException()
 
-        val user =  userRepository.findById(userAuth.get().userId) ?: throw NotFoundEntityException()
+        val user = userRepository.findById(userAuth.get().userId) ?: throw NotFoundEntityException()
 
         return user.get()
+    }
+
+    @Transactional(readOnly = true)
+    fun findUserByHeader(@NonNull header: HttpHeaders): User {
+        var token = header.toSingleValueMap()["authorization"]
+        token = token?.substring(7) ?: ""
+
+        return findByToken(token)
     }
 }
