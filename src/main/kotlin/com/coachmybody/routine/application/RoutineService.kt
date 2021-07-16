@@ -36,4 +36,12 @@ class RoutineService(
     }
 
 
+    @Transactional
+    fun updateRoutineTitle(routineId: Long, title: String) {
+        var routine = routineRepository.findById(routineId).get() ?: throw NotFoundEntityException()
+
+        routine.title = title
+
+        routineRepository.save(routine)
+    }
 }

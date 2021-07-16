@@ -53,4 +53,19 @@ class RoutineController(
     }
 
 
+    @ApiOperation(value = "루틴 제목 수정")
+    @ApiResponses(value = [
+        ApiResponse(code = 200, message = "루틴 제목 수정 성공"),
+        ApiResponse(code = 404, message = "존재하지 않는 루틴")
+    ])
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/routines/{routineId}/title")
+    fun updateRoutineTitle(@RequestHeader httpHeaders: HttpHeaders,
+                           @PathVariable(value = "routineId") routineId: Long,
+                           @RequestParam(value = "title", required = true) title: String) {
+
+        routineService.updateRoutineTitle(routineId, title);
+    }
+
+
 }
